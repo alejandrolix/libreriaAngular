@@ -10,9 +10,13 @@
                         <button type="button" class="btn btn-info" (click)="mostrarTodosLibros()">Todos</button>
                     </div>
                 </div>
-            </div>
-
-            <p *ngIf="!haSeleccionadoTipoLibro">Seleccione el tipo de libro a filtrar</p>                        
+                <!-- <div class="col-md-8">
+                    <form class="form-inline my-2 my-lg-0 justify-content-end">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por título o por autor" aria-label="búsqueda">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
+                    </form>
+                </div> -->
+            </div>                          
             <div class="row" id="libros" *ngIf="libros.length != 0">
                 <app-libro *ngFor="let libro of libros" [libro]="libro"></app-libro>
             </div>

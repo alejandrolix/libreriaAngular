@@ -9,7 +9,6 @@ import {Libro} from '../interfaces/libro';
 export class LibreriaComponent implements OnInit {
   copiaLibros: Libro[];
   libros: Libro[];
-  haSeleccionadoTipoLibro: boolean;
 
   constructor() { }
 
@@ -33,17 +32,14 @@ export class LibreriaComponent implements OnInit {
       }
     ];
 
-    this.libros = [];
-    this.haSeleccionadoTipoLibro = false;
+    this.mostrarLibrosActivos();
   }
 
   mostrarLibrosActivos() {
-    this.haSeleccionadoTipoLibro = true;
     this.libros = this.filtrarLibros('activos');
   }
 
   mostrarLibrosNoActivos() {
-    this.haSeleccionadoTipoLibro = true;
     this.libros = this.filtrarLibros('');
   }
 
@@ -69,7 +65,6 @@ export class LibreriaComponent implements OnInit {
   }
 
   mostrarTodosLibros() {
-    this.haSeleccionadoTipoLibro = true;
     this.libros = this.copiaLibros;
   }
 }
