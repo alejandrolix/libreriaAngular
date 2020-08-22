@@ -1,7 +1,17 @@
 <main role="main">
     <div class="album py-5 bg-light">
         <div class="container">
-            <button type="button" class="btn btn-success mb-5" id="btnNuevoLibro" data-toggle="modal" data-target="#formularioLibro">Nuevo Libro</button>
+            <button type="button" class="btn btn-success mb-4" id="btnNuevoLibro" data-toggle="modal" data-target="#formularioLibro">Nuevo Libro</button>            
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-secondary mr-2">Activos</button>
+                        <button type="button" class="btn btn-secondary mr-2">No activos</button>
+                        <button type="button" class="btn btn-secondary">Todos</button>
+                    </div>
+                </div>
+            </div>
+            
             <p *ngIf="libros.length == 0">No existe ningún libro</p>
             <div class="row" id="libros" *ngIf="libros.length != 0">
                 <app-libro *ngFor="let libro of libros" [libro]="libro"></app-libro>
