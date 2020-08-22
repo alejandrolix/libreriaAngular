@@ -5,14 +5,14 @@
             <div class="row mb-4">
                 <div class="col-md-4">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-info mr-2">Activos</button>
-                        <button type="button" class="btn btn-info mr-2">No activos</button>
-                        <button type="button" class="btn btn-info">Todos</button>
+                        <button type="button" class="btn btn-info mr-2" (click)="mostrarLibrosActivos()">Activos</button>
+                        <button type="button" class="btn btn-info mr-2" (click)="mostrarLibrosNoActivos()">No activos</button>
+                        <button type="button" class="btn btn-info" (click)="mostrarTodosLibros()">Todos</button>
                     </div>
                 </div>
             </div>
-            
-            <p *ngIf="libros.length == 0">No existe ningún libro</p>
+
+            <p *ngIf="!haSeleccionadoTipoLibro">Seleccione el tipo de libro a filtrar</p>                        
             <div class="row" id="libros" *ngIf="libros.length != 0">
                 <app-libro *ngFor="let libro of libros" [libro]="libro"></app-libro>
             </div>
