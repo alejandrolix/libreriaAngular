@@ -9,6 +9,7 @@ import {Libro} from '../interfaces/libro';
 export class LibreriaComponent implements OnInit {
   copiaLibros: Libro[];
   libros: Libro[];
+  textoBusqueda: string;
 
   constructor() { }
 
@@ -31,8 +32,10 @@ export class LibreriaComponent implements OnInit {
         activo: false
       }
     ];
+    this.textoBusqueda = null;    
 
-    this.mostrarLibrosActivos();
+    this.mostrarTodosLibros();    // Mostramos todos los libros para que podamos seleccionar si queremos filtrar por si están activos o no, o por
+                                  // título o autor.        
   }
 
   mostrarLibrosActivos() {
