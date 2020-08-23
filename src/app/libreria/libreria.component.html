@@ -16,6 +16,22 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>                        
                     </form>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4 mt-2">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="tipoOrdenacion">Ordenar</label>
+                        </div>
+                        <select class="custom-select" id="tipoOrdenacion" [(ngModel)]="tipoOrdenacion" (change)="cambiarOrdenacionLibros()">
+                          <option value="ninguno">-- Seleccione una opción --</option>
+                          <option value="autor">Autor</option>
+                          <option value="titulo">Título</option>
+                          <option value="precio">Precio</option>
+                        </select>
+                      </div>
+                </div>
             </div>                          
             <div class="row" id="libros" *ngIf="libros.length != 0">
                 <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"></app-libro>
