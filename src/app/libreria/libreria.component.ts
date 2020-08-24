@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Libro} from '../interfaces/libro';
+import {LibrosService} from '../servicios/libros.service';
 
 @Component({
   selector: 'app-libreria',
@@ -12,29 +13,10 @@ export class LibreriaComponent implements OnInit {
   textoBusqueda: string;
   tipoOrdenacion: string;
 
-  constructor() { }
+  constructor(private librosService: LibrosService) { }
 
   ngOnInit(): void {
-    this.copiaLibros = [
-      {
-        cod: '1',
-        titulo: 'libro 1',
-        precio: 45,
-        imagen: null,
-        autor: 'Perez Reverte',
-        activo: true,
-        puntuacion: 5
-      },
-      {
-        cod: '2',
-        titulo: 'libro 2',
-        precio: 50,
-        imagen: null,
-        autor: 'Miguel de Cervantes',
-        activo: false,
-        puntuacion: 3
-      }      
-    ];
+    this.copiaLibros = this.librosService.obtenerLibros();
     this.textoBusqueda = null; 
     this.tipoOrdenacion = 'ninguno';
 
