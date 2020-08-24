@@ -22,7 +22,8 @@ export class LibreriaComponent implements OnInit {
         precio: 45,
         imagen: null,
         autor: 'Perez Reverte',
-        activo: true
+        activo: true,
+        puntuacion: 5
       },
       {
         cod: '2',
@@ -30,7 +31,8 @@ export class LibreriaComponent implements OnInit {
         precio: 50,
         imagen: null,
         autor: 'Miguel de Cervantes',
-        activo: false
+        activo: false,
+        puntuacion: 3
       }      
     ];
     this.textoBusqueda = null; 

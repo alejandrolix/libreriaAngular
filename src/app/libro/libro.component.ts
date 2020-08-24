@@ -13,4 +13,8 @@ export class LibroComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  cambiarPuntuacion(puntuacion: number) {
+    this.libro.puntuacion = puntuacion;
+  }
 }

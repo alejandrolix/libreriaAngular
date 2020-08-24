@@ -4,5 +4,6 @@ export interface Libro {
     precio: number,
     imagen: string,
     autor: string,
-    activo: boolean
+    activo: boolean,
+    puntuacion: number
 }

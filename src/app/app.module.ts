@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { LibreriaComponent } from './libreria/libreria.component';
 import { LibroComponent } from './libro/libro.component';
 import { BuscarTituloAutorPipe } from './pipes/buscar-titulo-autor.pipe';
+import { PuntuacionLibroComponent } from './puntuacion-libro/puntuacion-libro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LibreriaComponent,
     LibroComponent,
-    BuscarTituloAutorPipe
+    BuscarTituloAutorPipe,
+    PuntuacionLibroComponent
   ],
   imports: [
     BrowserModule,
