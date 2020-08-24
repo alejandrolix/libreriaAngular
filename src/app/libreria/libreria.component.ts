@@ -24,7 +24,8 @@ export class LibreriaComponent implements OnInit {
 
       this.mostrarTodosLibros();    // Mostramos todos los libros para que podamos seleccionar si queremos filtrar por si están activos o no, o por
                                     // título o autor.  
-    });      
+    },
+    error => alert('Ha habido un error al obtener los libros: ' + error.error.mensaje));      
   }
 
   mostrarLibrosActivos() {

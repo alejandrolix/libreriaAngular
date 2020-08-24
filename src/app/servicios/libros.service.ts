@@ -15,11 +15,11 @@ export class LibrosService {
   obtenerLibros(): Observable<Libro[]> {
     return this.http.get<RespuestaLibros>('http://localhost:8080/libros').pipe(
       map(respuesta => {
+        
         if (respuesta.ok) {
           return respuesta.data;
         }
-      }),
-      catchError(error => throwError('error catchError: ' + error))
+      })
     );
   }
 }
