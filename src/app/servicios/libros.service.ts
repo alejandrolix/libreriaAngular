@@ -71,5 +71,5 @@ export class LibrosService {
     );
 
     return observable;
-  }
+  }  
 }

@@ -13,33 +13,31 @@ export class BuscarTituloAutorPipe implements PipeTransform {
       librosFiltrados = libros;
     }
     else {  
-      librosFiltrados = this.filtrarLibrosPor(libros, 'autor', textoBusqueda);      
-
-      if (librosFiltrados.length == 0) {    // No hay ningún libro con el autor introducido, buscamos por título.
-        librosFiltrados = this.filtrarLibrosPor(libros, 'titulo', textoBusqueda);
-      }
+      librosFiltrados = this.obtenerLibrosPorAutorOTitulo(libros, textoBusqueda);
     }
 
     return librosFiltrados;
   }
 
-  filtrarLibrosPor(libros: Libro[], campo: string, textoBusqueda: string): Libro[] {
+  obtenerLibrosPorAutorOTitulo(libros: Libro[], textoBusqueda: string): Libro[] {
     let librosFiltrados: Libro[] = null;
 
-    if (campo === 'autor') {
-      librosFiltrados = libros.filter(libro => {
-        let autor = libro.autor.toLowerCase();
-  
-        return autor.includes(textoBusqueda);
-      });    
-    }
-    else {
-      librosFiltrados = libros.filter(libro => {
-        let titulo = libro.titulo.toLowerCase();
+    librosFiltrados = libros.filter(libro => {
+      let autor = libro.autor.toLowerCase();
+      let titulo = libro.titulo.toLowerCase();
+      let estaTextoBusquedaEnAutor = false;
+      let estaTextoBusquedaEnTitulo = false;
 
-        return titulo.includes(textoBusqueda);
-      });
-    }           
+      if (autor.includes(textoBusqueda)) {
+        estaTextoBusquedaEnAutor = true;
+      }
+
+      if (titulo.includes(textoBusqueda)) {
+        estaTextoBusquedaEnTitulo = true;
+      }
+
+      return estaTextoBusquedaEnAutor || estaTextoBusquedaEnTitulo;
+    });           
 
     return librosFiltrados;
   }
