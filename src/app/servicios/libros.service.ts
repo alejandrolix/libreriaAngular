@@ -57,4 +57,19 @@ export class LibrosService {
 
     return observable;
   }
+
+  obtenerLibrosNoActivos(): Observable<Libro[]> {    
+    let url = this.url + '/noActivos';
+
+    let observable = this.http.get<RespuestaLibros>(url).pipe(
+      map(respuesta => {
+        
+        if (respuesta.ok) {
+          return respuesta.data;
+        }
+      })
+    );
+
+    return observable;
+  }
 }

@@ -36,7 +36,10 @@ export class LibreriaComponent implements OnInit {
   }
 
   mostrarLibrosNoActivos() {
-    this.libros = this.filtrarLibros('');
+    this.librosService.obtenerLibrosNoActivos().subscribe(libros => {
+      this.libros = libros;
+    },
+    error => alert('Ha habido un error al obtener los libros no activos: ' + error.error.mensaje));
   }
 
   filtrarLibros(tipoFiltro: string): Libro[] {
