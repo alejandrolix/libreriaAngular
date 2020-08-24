@@ -16,12 +16,15 @@ export class LibreriaComponent implements OnInit {
   constructor(private librosService: LibrosService) { }
 
   ngOnInit(): void {
-    this.copiaLibros = this.librosService.obtenerLibros();
-    this.textoBusqueda = null; 
-    this.tipoOrdenacion = 'ninguno';
+    this.librosService.obtenerLibros().subscribe(libros => {
+      this.copiaLibros = libros
 
-    this.mostrarTodosLibros();    // Mostramos todos los libros para que podamos seleccionar si queremos filtrar por si están activos o no, o por
-                                  // título o autor.        
+      this.textoBusqueda = null; 
+      this.tipoOrdenacion = 'ninguno';
+
+      this.mostrarTodosLibros();    // Mostramos todos los libros para que podamos seleccionar si queremos filtrar por si están activos o no, o por
+                                    // título o autor.  
+    });      
   }
 
   mostrarLibrosActivos() {

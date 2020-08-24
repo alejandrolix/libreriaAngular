@@ -15,6 +15,6 @@ export class LibroComponent implements OnInit {
   }
 
   cambiarPuntuacion(puntuacion: number) {
-    this.libro.puntuacion = puntuacion;
+    // this.libro.puntuacion = puntuacion;
   }
 }

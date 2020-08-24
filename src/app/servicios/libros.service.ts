@@ -1,35 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Libro } from '../interfaces/libro';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { RespuestaLibros } from './../interfaces/respuesta-libros';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LibrosService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  obtenerLibros(): Libro[] {
-    let libros: Libro[] = [
-      {
-        cod: '1',
-        titulo: 'libro 1',
-        precio: 45,
-        imagen: null,
-        autor: 'Perez Reverte',
-        activo: true,
-        puntuacion: 5
-      },
-      {
-        cod: '2',
-        titulo: 'libro 2',
-        precio: 50,
-        imagen: null,
-        autor: 'Miguel de Cervantes',
-        activo: false,
-        puntuacion: 3
-      }   
-    ];
-
-    return libros;
+  obtenerLibros(): Observable<Libro[]> {
+    return this.http.get<RespuestaLibros>('http://localhost:8080/libros').pipe(
+      map(respuesta => {
+        if (respuesta.ok) {
+          return respuesta.data;
+        }
+      }),
+      catchError(error => throwError('error catchError: ' + error))
+    );
   }
 }
