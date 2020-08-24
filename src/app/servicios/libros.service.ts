@@ -9,11 +9,16 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LibrosService {
+  private url: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.url = 'http://localhost:8080/libros';
+  }
 
-  obtenerLibros(): Observable<Libro[]> {
-    return this.http.get<RespuestaLibros>('http://localhost:8080/libros').pipe(
+  obtenerLibrosOrdenadosPor(nombreCampoOrdenar: string): Observable<Libro[]> {
+    let url = this.url + '?ordenadoPor=' + nombreCampoOrdenar;
+
+    let observable = this.http.get<RespuestaLibros>(url).pipe(
       map(respuesta => {
         
         if (respuesta.ok) {
@@ -21,5 +26,20 @@ export class LibrosService {
         }
       })
     );
+
+    return observable;
+  }
+
+  obtenerLibros(): Observable<Libro[]> {    
+    let observable = this.http.get<RespuestaLibros>(this.url).pipe(
+      map(respuesta => {
+        
+        if (respuesta.ok) {
+          return respuesta.data;
+        }
+      })
+    );
+
+    return observable;
   }
 }

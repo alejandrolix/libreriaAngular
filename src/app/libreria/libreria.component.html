@@ -23,7 +23,7 @@
                         <div class="input-group-prepend">
                           <label class="input-group-text" for="tipoOrdenacion">Ordenar</label>
                         </div>
-                        <select class="custom-select" id="tipoOrdenacion" [(ngModel)]="tipoOrdenacion" (change)="cambiarOrdenacionLibros()">
+                        <select class="custom-select" [(ngModel)]="nombreCampoOrdenar" (change)="cambiarOrdenacionLibros()">
                           <option value="ninguno">-- Seleccione una opción --</option>
                           <option value="autor">Autor</option>
                           <option value="titulo">Título</option>

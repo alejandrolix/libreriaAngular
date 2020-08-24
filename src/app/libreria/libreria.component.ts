@@ -11,7 +11,7 @@ export class LibreriaComponent implements OnInit {
   copiaLibros: Libro[];
   libros: Libro[];
   textoBusqueda: string;
-  tipoOrdenacion: string;
+  nombreCampoOrdenar: string;
 
   constructor(private librosService: LibrosService) { }
 
@@ -20,7 +20,7 @@ export class LibreriaComponent implements OnInit {
       this.copiaLibros = libros
 
       this.textoBusqueda = null; 
-      this.tipoOrdenacion = 'ninguno';
+      this.nombreCampoOrdenar = 'ninguno';
 
       this.mostrarTodosLibros();    // Mostramos todos los libros para que podamos seleccionar si queremos filtrar por si están activos o no, o por
                                     // título o autor.  
@@ -62,41 +62,9 @@ export class LibreriaComponent implements OnInit {
   }
 
   cambiarOrdenacionLibros() {
-    switch (this.tipoOrdenacion) {
-      case 'autor':
-        this.libros = this.copiaLibros.sort((libro1: Libro, libro2: Libro) => {
-          if (libro1.autor > libro2.autor) {
-            return 1;
-          }
-          
-          if (libro1.autor < libro2.autor) {
-            return -1;
-          }
-          
-          return 0;
-        });
-
-        break;
-
-      case 'titulo':
-        this.libros = this.copiaLibros.sort((libro1: Libro, libro2: Libro) => {
-          if (libro1.titulo > libro2.titulo) {
-            return 1;
-          }
-
-          if (libro1.titulo < libro2.titulo) {
-            return -1;
-          }
-          
-          return 0;
-        });
-
-        break;
-
-      case 'precio':
-        this.libros = this.copiaLibros.sort((libro1: Libro, libro2: Libro) => libro1.precio - libro2.precio);
-
-        break;          
-    }    
+    this.librosService.obtenerLibrosOrdenadosPor(this.nombreCampoOrdenar).subscribe(libros => {
+      this.libros = libros
+    },
+    error => alert('Ha habido un error al obtener los libros: ' + error.error.mensaje));   
   }
 }
