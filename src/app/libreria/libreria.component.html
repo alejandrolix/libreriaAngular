@@ -32,12 +32,12 @@
                       </div>
                 </div>
             </div>
-            <div class="row" id="libros" *ngIf="(libros | buscarTituloAutor:textoBusqueda).length != 0; else sinLibros">
+            <div class="row" *ngIf="(libros | buscarTituloAutor:textoBusqueda).length != 0; else sinLibros">
                 <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"></app-libro>
             </div>
 
             <ng-template #sinLibros>
-                <p>No existe ningún libro con el término introducido</p>
+                <p>No existe ningún libro</p>
             </ng-template>
         </div>
     </div>

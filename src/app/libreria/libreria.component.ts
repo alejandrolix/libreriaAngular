@@ -15,6 +15,8 @@ export class LibreriaComponent implements OnInit {
   constructor(private librosService: LibrosService) { }
 
   ngOnInit(): void {
+    this.libros = [];
+
     this.librosService.obtenerLibros().subscribe(libros => {
       this.libros = libros;
 
