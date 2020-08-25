@@ -14,6 +14,10 @@ export class BuscarTituloAutorPipe implements PipeTransform {
     }
     else {  
       librosFiltrados = this.obtenerLibrosPorAutorOTitulo(libros, textoBusqueda);
+
+      if (librosFiltrados.length == 0) {
+        librosFiltrados = null;
+      }
     }
 
     return librosFiltrados;

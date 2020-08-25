@@ -32,9 +32,11 @@
                       </div>
                 </div>
             </div>
-            <div class="row" *ngIf="(libros | buscarTituloAutor:textoBusqueda).length != 0; else sinLibros">
+            <div class="row" *ngIf="libros.length != 0; else sinLibros">
                 <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"></app-libro>
             </div>
+
+            <p *ngIf="(libros | buscarTituloAutor:textoBusqueda) == null">No existe ningún libro con el término de búsqueda introducido</p>
 
             <ng-template #sinLibros>
                 <p>No existe ningún libro</p>
