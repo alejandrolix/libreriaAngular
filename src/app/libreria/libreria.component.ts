@@ -48,9 +48,11 @@ export class LibreriaComponent implements OnInit {
   }
 
   cambiarOrdenacionLibros() {
-    this.librosService.obtenerLibrosOrdenadosPor(this.nombreCampoOrdenar).subscribe(libros => {
-      this.libros = libros
-    },
-    error => alert('Ha habido un error al obtener los libros ordenados por ' + this.nombreCampoOrdenar + ': ' + error.error.mensaje));   
+    if (this.nombreCampoOrdenar !== 'ninguno') {
+      this.librosService.obtenerLibrosOrdenadosPor(this.nombreCampoOrdenar).subscribe(libros => {
+        this.libros = libros
+      },
+      error => alert('Ha habido un error al obtener los libros ordenados por ' + this.nombreCampoOrdenar + ': ' + error.error.mensaje)); 
+    }      
   }
 }
