@@ -1,6 +1,6 @@
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm" style="width: 18rem;">
-        <img src="imagenes/{{ libro.imagen }}" class="card-img-top" [alt]="libro.titulo">
+        <img src="data:image/{{ libro.imagen.formato }};base64,{{ libro.imagen.imagen }}" class="card-img-top" [alt]="libro.titulo">
         <div class="card-body">
             <p class="card-text">{{ libro.titulo }}</p>
             <p class="card-text">{{ libro.autor }}</p>

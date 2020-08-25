@@ -1,8 +1,10 @@
+import { ImagenLibro } from './imagen-libro';
+
 export interface Libro {
     cod: string,
     titulo: string,
     precio: number,
-    imagen: string,
+    imagen: ImagenLibro,
     autor: string,
     activo: boolean,
     puntuacion: number
