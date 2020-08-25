@@ -11,6 +11,7 @@ import { PuntuacionLibroComponent } from './puntuacion-libro/puntuacion-libro.co
 import { MenuNavegacionComponent } from './menu-navegacion/menu-navegacion.component';
 import { RouterModule } from '@angular/router';
 import { rutas } from './app.routes';
+import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { rutas } from './app.routes';
     LibroComponent,
     BuscarTituloAutorPipe,
     PuntuacionLibroComponent,
-    MenuNavegacionComponent
+    MenuNavegacionComponent,
+    PiePaginaComponent
   ],
   imports: [
     BrowserModule,
