@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Libro } from '../interfaces/libro';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { RespuestaLibros } from './../interfaces/respuesta-libros';
+import { RespuestaLibros } from '../interfaces/respuesta-libros';
 import { map } from 'rxjs/operators';
+import {RespuestaLibroEliminado} from '../interfaces/respuesta-libro-eliminado';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class LibrosService {
 
     let observable = this.http.get<RespuestaLibros>(url).pipe(
       map(respuesta => {
-        
+
         if (respuesta.ok) {
           return respuesta.data;
         }
@@ -30,10 +31,10 @@ export class LibrosService {
     return observable;
   }
 
-  obtenerLibros(): Observable<Libro[]> {    
+  obtenerLibros(): Observable<Libro[]> {
     let observable = this.http.get<RespuestaLibros>(this.url).pipe(
       map(respuesta => {
-        
+
         if (respuesta.ok) {
           return respuesta.data;
         }
@@ -43,12 +44,12 @@ export class LibrosService {
     return observable;
   }
 
-  obtenerLibrosActivos(): Observable<Libro[]> {    
+  obtenerLibrosActivos(): Observable<Libro[]> {
     let url = this.url + '/activos';
 
     let observable = this.http.get<RespuestaLibros>(url).pipe(
       map(respuesta => {
-        
+
         if (respuesta.ok) {
           return respuesta.data;
         }
@@ -58,12 +59,12 @@ export class LibrosService {
     return observable;
   }
 
-  obtenerLibrosNoActivos(): Observable<Libro[]> {    
+  obtenerLibrosNoActivos(): Observable<Libro[]> {
     let url = this.url + '/noActivos';
 
     let observable = this.http.get<RespuestaLibros>(url).pipe(
       map(respuesta => {
-        
+
         if (respuesta.ok) {
           return respuesta.data;
         }
@@ -71,5 +72,12 @@ export class LibrosService {
     );
 
     return observable;
-  }  
+  }
+
+  eliminarLibro(cod: string): Observable<RespuestaLibroEliminado> {
+    let url = this.url + '/' + cod;
+    let observable = this.http.delete<RespuestaLibroEliminado>(url);
+
+    return observable;
+  }
 }

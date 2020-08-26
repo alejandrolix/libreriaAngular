@@ -16,14 +16,17 @@ export class LibreriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.libros = [];
+    this.obtenerLibros();
+  }
 
+  obtenerLibros() {
     this.librosService.obtenerLibros().subscribe(libros => {
-      this.libros = libros;
+        this.libros = libros;
 
-      this.textoBusqueda = null; 
-      this.nombreCampoOrdenar = 'ninguno';
-    },
-    error => alert('Ha habido un error al obtener los libros: ' + error.error.mensaje));      
+        this.textoBusqueda = null;
+        this.nombreCampoOrdenar = 'ninguno';
+      },
+      error => alert('Ha habido un error al obtener los libros: ' + error.error.mensaje));
   }
 
   mostrarLibrosActivos() {
@@ -52,7 +55,13 @@ export class LibreriaComponent implements OnInit {
       this.librosService.obtenerLibrosOrdenadosPor(this.nombreCampoOrdenar).subscribe(libros => {
         this.libros = libros
       },
-      error => alert('Ha habido un error al obtener los libros ordenados por ' + this.nombreCampoOrdenar + ': ' + error.error.mensaje)); 
-    }      
+      error => alert('Ha habido un error al obtener los libros ordenados por ' + this.nombreCampoOrdenar + ': ' + error.error.mensaje));
+    }
+  }
+
+  actualizarLibreria(correcto: boolean) {
+    if (correcto) {
+      this.obtenerLibros();
+    }
   }
 }

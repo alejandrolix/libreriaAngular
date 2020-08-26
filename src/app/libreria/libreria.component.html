@@ -21,7 +21,7 @@
                 <div class="col-md-4 mt-2">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                          <label class="input-group-text" for="tipoOrdenacion">Ordenar</label>
+                          <label class="input-group-text">Ordenar</label>
                         </div>
                         <select class="custom-select" [(ngModel)]="nombreCampoOrdenar" (change)="cambiarOrdenacionLibros()">
                           <option value="ninguno">-- Seleccione una opción --</option>
@@ -33,7 +33,8 @@
                 </div>
             </div>
             <div class="row mt-3" *ngIf="libros.length != 0; else sinLibros">
-                <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"></app-libro>
+                <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"
+                           (actualizarLibreria)="actualizarLibreria($event)"></app-libro>
             </div>
 
             <p *ngIf="(libros | buscarTituloAutor:textoBusqueda) == null">No existe ningún libro con el término de búsqueda introducido</p>
