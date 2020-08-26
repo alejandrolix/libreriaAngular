@@ -22,7 +22,7 @@ export class PuntuacionLibroComponent implements OnInit {
   }
 
   cambiarPuntuacion(nuevaPuntuacion: number) {
-    this.librosService.cambiarPuntuacion(this.libro.cod, nuevaPuntuacion).subscribe(respuesta => {
+    this.librosService.cambiarPuntuacionLibro(this.libro.cod, nuevaPuntuacion).subscribe(respuesta => {
       if (respuesta.ok) {
         this.libro.puntuacion = this.copiaPuntuacion;
       }

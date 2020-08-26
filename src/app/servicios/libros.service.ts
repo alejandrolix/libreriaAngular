@@ -81,7 +81,7 @@ export class LibrosService {
     return observable;
   }
 
-  cambiarPuntuacion(cod: string, nuevaPuntuacion: number): Observable<RespuestaLibros> {
+  cambiarPuntuacionLibro(cod: string, nuevaPuntuacion: number): Observable<RespuestaLibros> {
     let url = this.url + '/' + cod + '/puntuacion';
     let puntuacion = {
       puntuacion: nuevaPuntuacion
