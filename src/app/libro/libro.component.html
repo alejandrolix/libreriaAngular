@@ -19,7 +19,7 @@
                 </div>
                 <small class="text-muted">{{ libro.precio }} €</small>
             </div>
-            <app-puntuacion-libro (puntuacionCambiada)="cambiarPuntuacion($event)" [puntuacion]="libro.puntuacion"></app-puntuacion-libro>
+            <app-puntuacion-libro [libro]="libro"></app-puntuacion-libro>
         </div>
     </div>
 </div>

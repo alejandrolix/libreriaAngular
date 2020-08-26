@@ -1,4 +1,7 @@
 <div class="star-container mt-2" (mouseleave)="restoreRating()">
-    <i *ngFor="let star of [1, 2, 3, 4, 5]" class="fa-star" [ngClass]="{'fas': star <= copiaPuntuacion, 'far': star > copiaPuntuacion }" (mouseenter)="copiaPuntuacion = star" (click)="setRating()"></i>
+    <i *ngFor="let star of [1, 2, 3, 4, 5]"
+       class="fa-star"
+       [ngClass]="{'fas': star <= copiaPuntuacion, 'far': star > copiaPuntuacion }" (mouseenter)="copiaPuntuacion = star"
+       (click)="cambiarPuntuacion(copiaPuntuacion)"></i>
     <span class="ml-2">{{copiaPuntuacion}} / 5</span>
 </div>
