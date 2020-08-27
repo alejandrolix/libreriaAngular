@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { rutas } from './app.routes';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InicioComponent } from './inicio/inicio.component';
     PuntuacionLibroComponent,
     MenuNavegacionComponent,
     PiePaginaComponent,
-    InicioComponent
+    InicioComponent,
+    DetalleLibroComponent
   ],
   imports: [
     BrowserModule,
