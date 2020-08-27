@@ -12,6 +12,7 @@ import { MenuNavegacionComponent } from './menu-navegacion/menu-navegacion.compo
 import { RouterModule } from '@angular/router';
 import { rutas } from './app.routes';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
     BuscarTituloAutorPipe,
     PuntuacionLibroComponent,
     MenuNavegacionComponent,
-    PiePaginaComponent
+    PiePaginaComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
