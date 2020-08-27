@@ -13,7 +13,7 @@ export const rutas: Route[] = [
     component: LibreriaComponent
   },
   {
-    path: 'libros/:id/detalle',
+    path: 'libros/:cod/detalle',
     component: DetalleLibroComponent
   },
   {

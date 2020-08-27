@@ -1,1 +1,45 @@
-<p>detalle-libro works!</p>
+<div class="container mt-4" *ngIf="libro != null">
+  <div class="row">
+    <div class="col-12">
+      <h2>{{ libro.titulo }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <img class="img-fluid">
+    </div>
+    <div class="col-md-6">
+      <div class="container-fluid infoLibro">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="font-weight-bold fichaTecnica text-center">Ficha Técnica</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <p>Título</p>
+          </div>
+          <div class="col-md-8">
+            <p>{{ libro.titulo }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <p>ISBN</p>
+          </div>
+          <div class="col-md-8">
+            <p>{{ libro.isbn }}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <p>Precio</p>
+          </div>
+          <div class="col-md-8">
+            <p>{{ libro.precio }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

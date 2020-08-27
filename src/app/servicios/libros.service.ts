@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { RespuestaLibros } from '../interfaces/respuesta-libros';
 import { map } from 'rxjs/operators';
-import {RespuestaLibroEliminado} from '../interfaces/respuesta-libro-eliminado';
+import { RespuestaLibroEliminado } from '../interfaces/respuesta-libro-eliminado';
+import { RespuestaLibro } from '../interfaces/respuesta-libro';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +64,21 @@ export class LibrosService {
     let url = this.url + '/noActivos';
 
     let observable = this.http.get<RespuestaLibros>(url).pipe(
+      map(respuesta => {
+
+        if (respuesta.ok) {
+          return respuesta.data;
+        }
+      })
+    );
+
+    return observable;
+  }
+
+  obtenerLibro(cod: string): Observable<Libro> {
+    let url = this.url + '/' + cod;
+
+    let observable = this.http.get<RespuestaLibro>(url).pipe(
       map(respuesta => {
 
         if (respuesta.ok) {
