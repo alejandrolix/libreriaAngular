@@ -19,7 +19,6 @@ export class DetalleLibroComponent implements OnInit {
 
     this.librosService.obtenerLibro(codLibro).subscribe(libro => {
       this.libro = libro[0];
-      console.log(this.libro);
     },error => alert('Ha habido un error al obtener el libro: ' + error.error.mensaje));
   }
 }
