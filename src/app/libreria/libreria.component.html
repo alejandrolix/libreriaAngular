@@ -1,161 +1,49 @@
-<main role="main">
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <button type="button" class="btn btn-success mb-5" id="btnNuevoLibro" data-toggle="modal" data-target="#formularioLibro">Nuevo Libro</button>
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <div class="btn-group" role="group" aria-label="Filtrado libros">
-                        <button type="button" class="btn btn-info mr-2" (click)="mostrarLibrosActivos()">Activos</button>
-                        <button type="button" class="btn btn-info mr-2" (click)="mostrarLibrosNoActivos()">No activos</button>
-                        <button type="button" class="btn btn-info" (click)="mostrarTodosLibros()">Todos</button>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <form class="form-inline my-2 my-lg-0 justify-content-end">
-                        <input class="form-control" type="search" [(ngModel)]="textoBusqueda" name="buscar" placeholder="Buscar por título o autor" aria-label="búsqueda">
-                    </form>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-4 mt-2">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <label class="input-group-text">Ordenar</label>
-                        </div>
-                        <select class="custom-select" [(ngModel)]="nombreCampoOrdenar" (change)="cambiarOrdenacionLibros()">
-                          <option value="ninguno">-- Seleccione una opción --</option>
-                          <option value="autor">Autor</option>
-                          <option value="titulo">Título</option>
-                          <option value="precio">Precio</option>
-                        </select>
-                      </div>
-                </div>
-            </div>
-            <div class="row mt-3" *ngIf="libros.length != 0; else sinLibros">
-                <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"
-                           (actualizarLibreria)="actualizarLibreria($event)"></app-libro>
-            </div>
-
-            <p *ngIf="(libros | buscarTituloAutor:textoBusqueda) == null">No existe ningún libro con el término de búsqueda introducido</p>
-
-            <ng-template #sinLibros>
-                <p>No existe ningún libro</p>
-            </ng-template>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <button type="button" class="btn btn-success mb-5" id="btnNuevoLibro" data-toggle="modal"
+            data-target="#formularioLibro">Nuevo Libro
+    </button>
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="btn-group" role="group" aria-label="Filtrado libros">
+          <button type="button" class="btn btn-info mr-2" (click)="mostrarLibrosActivos()">Activos</button>
+          <button type="button" class="btn btn-info mr-2" (click)="mostrarLibrosNoActivos()">No activos</button>
+          <button type="button" class="btn btn-info" (click)="mostrarTodosLibros()">Todos</button>
         </div>
+      </div>
+      <div class="col-md-8">
+        <form class="form-inline my-2 my-lg-0 justify-content-end">
+          <input class="form-control" type="search" [(ngModel)]="textoBusqueda" name="buscar"
+                 placeholder="Buscar por título o autor" aria-label="búsqueda">
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4 mt-2">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Ordenar</label>
+          </div>
+          <select class="custom-select" [(ngModel)]="nombreCampoOrdenar" (change)="cambiarOrdenacionLibros()">
+            <option value="ninguno">-- Seleccione una opción --</option>
+            <option value="autor">Autor</option>
+            <option value="titulo">Título</option>
+            <option value="precio">Precio</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngIf="libros.length != 0; else sinLibros">
+      <app-libro *ngFor="let libro of libros | buscarTituloAutor:textoBusqueda" [libro]="libro"
+                 (actualizarLibreria)="actualizarLibreria($event)"></app-libro>
     </div>
 
-    <!-- Modal crear y actualizar libro -->
-    <div class="modal fade" id="formularioLibro" tabindex="-1" aria-labelledby="formularioLibro" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloModal"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#" method="post">
-                        <div class="container">
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="activo">
-                                        <label class="form-check-label" for="activo">Activo</label>
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="cod">Código</label>
-                                    <input type="text" class="form-control" id="cod" aria-describedby="codHelp" required>
-                                    <small id="codHelp" class="form-text text-muted">Indique el código del libro en este campo.</small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="titulo">Título</label>
-                                    <input type="text" class="form-control" id="titulo" aria-describedby="tituloHelp" required>
-                                    <small id="tituloHelp" class="form-text text-muted">Indique el título del libro en este campo.</small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="autores">Autor</label>
-                                    <select class="form-control" id="autores" aria-describedby="autoresHelp"></select>
-                                    <small id="autoresHelp" class="form-text text-muted">Indique el autor del libro en este campo.</small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="isbn">ISBN</label>
-                                    <input type="text" class="form-control" id="isbn" aria-describedby="isbnHelp" required>
-                                    <small id="isbnHelp" class="form-text text-muted">Indique el ISBN del libro en este campo.</small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="precio">Precio</label>
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control" id="precio" aria-describedby="precioHelp" required>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fas fa-euro-sign"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <small id="precioHelp" class="form-text text-muted">Indique el precio del libro en este campo.</small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="url">URL</label>
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" class="form-control" id="url" aria-describedby="urlHelp">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fas fa-link"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <small id="urlHelp" class="form-text text-muted">Indique la URL del libro en este campo.</small>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="imagen">Imagen</label>
-                                    <input type="file" class="form-control-file" id="imagenLibro">
-                                </div>
+    <p *ngIf="(libros | buscarTituloAutor:textoBusqueda) == null">No existe ningún libro con el término de búsqueda
+      introducido</p>
 
-                                <div class="form-group col-md-12">
-                                    <button type="button" class="btn btn-primary" id="btnAccion"></button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Información Libro -->
-    <div class="modal fade" id="verLibro" tabindex="-1" aria-labelledby="verLibro" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tituloLibro"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img id="imagen" class="img-fluid">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="container-fluid infoLibro"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</main>
+    <ng-template #sinLibros>
+      <p>No existe ningún libro</p>
+    </ng-template>
+  </div>
+</div>
