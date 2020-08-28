@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <img class="img-fluid">
+      <img class="img-fluid" src="data:image/{{ libro.imagen.formato }};base64,{{ libro.imagen.imagen }}" [alt]="libro.titulo">
     </div>
     <div class="col-md-6">
       <div class="container-fluid infoLibro">
@@ -36,7 +36,7 @@
             <p>Precio</p>
           </div>
           <div class="col-md-8">
-            <p>{{ libro.precio }}</p>
+            <p>{{ libro.precio }} €</p>
           </div>
         </div>
       </div>
