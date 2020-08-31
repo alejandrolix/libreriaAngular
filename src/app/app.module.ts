@@ -14,6 +14,7 @@ import { rutas } from './app.routes';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
+import { EditarLibroComponent } from './editar-libro/editar-libro.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
     MenuNavegacionComponent,
     PiePaginaComponent,
     InicioComponent,
-    DetalleLibroComponent
+    DetalleLibroComponent,
+    EditarLibroComponent
   ],
   imports: [
     BrowserModule,

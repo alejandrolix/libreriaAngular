@@ -3,6 +3,7 @@ import { LibreriaComponent } from './libreria/libreria.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
 import { ComprobarCodLibroGuard } from './guards/comprobar-cod-libro.guard';
+import { EditarLibroComponent } from './editar-libro/editar-libro.component';
 
 export const rutas: Route[] = [
   {
@@ -17,6 +18,10 @@ export const rutas: Route[] = [
     path: 'libros/:cod/detalle',
     canActivate: [ComprobarCodLibroGuard],
     component: DetalleLibroComponent
+  },
+  {
+    path: 'libros/:cod/editar',
+    component: EditarLibroComponent
   },
   {
     path: '',
