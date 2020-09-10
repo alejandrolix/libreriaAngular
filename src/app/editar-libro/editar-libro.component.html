@@ -1,64 +1,85 @@
-<form class="mt-4">
+<form class="mt-4" [formGroup]="formEditarLibro" *ngIf="formEditarLibro != null" (ngSubmit)="editarLibro()">
   <div class="container">
     <div class="row">
       <div class="form-group col-md-12">
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="activo">
-          <label class="form-check-label" for="activo">Activo</label>
+          <input type="checkbox" class="form-check-input" formControlName="activo">
+          <label class="form-check-label">Activo</label>
         </div>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="cod">Código</label>
-        <input type="text" class="form-control" id="cod" aria-describedby="codHelp" required>
+        <label>Código</label>
+        <input type="text" class="form-control" formControlName="codigo" aria-describedby="codHelp" required>
         <small id="codHelp" class="form-text text-muted">Indique el código del libro en este campo.</small>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="titulo">Título</label>
-        <input type="text" class="form-control" id="titulo" aria-describedby="tituloHelp" required>
+        <label>Título</label>
+        <input type="text" class="form-control" formControlName="titulo" aria-describedby="tituloHelp" required>
         <small id="tituloHelp" class="form-text text-muted">Indique el título del libro en este campo.</small>
+        <small class="error d-block mt-2" *ngIf="formEditarLibro.get('titulo').errors?.required">
+          El título es obligatorio
+        </small>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="autores">Autor</label>
-        <select class="form-control" id="autores" aria-describedby="autoresHelp"></select>
+        <label>Autor</label>
+        <select class="form-control" aria-describedby="autoresHelp" formControlName="autor">
+          <option *ngFor="let autor of autores" [value]="autor.cod">{{ autor.NOMBRE }}</option>
+        </select>
         <small id="autoresHelp" class="form-text text-muted">Indique el autor del libro en este campo.</small>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="isbn">ISBN</label>
-        <input type="text" class="form-control" id="isbn" aria-describedby="isbnHelp" required>
+        <label>ISBN</label>
+        <input type="text" class="form-control" formControlName="isbn" aria-describedby="isbnHelp" required>
         <small id="isbnHelp" class="form-text text-muted">Indique el ISBN del libro en este campo.</small>
+        <small class="error d-block mt-2" *ngIf="formEditarLibro.get('isbn').errors?.required">
+          El ISBN es obligatorio
+        </small>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="precio">Precio</label>
+        <label>Precio</label>
         <div class="input-group input-group-sm">
-          <input type="text" class="form-control" id="precio" aria-describedby="precioHelp" required>
+          <input type="text" class="form-control" formControlName="precio" aria-describedby="precioHelp" required>
           <div class="input-group-prepend">
             <span class="input-group-text">
-                <i class="fas fa-euro-sign"></i>
+              <i class="fas fa-euro-sign"></i>
             </span>
           </div>
         </div>
+
         <small id="precioHelp" class="form-text text-muted">Indique el precio del libro en este campo.</small>
+        <small class="error d-block mt-2" *ngIf="formEditarLibro.get('precio').errors?.required">
+          El precio es obligatorio
+        </small>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="url">URL</label>
+        <label>URL</label>
         <div class="input-group input-group-sm">
-          <input type="text" class="form-control" id="url" aria-describedby="urlHelp">
+          <input type="text" class="form-control" formControlName="url" aria-describedby="urlHelp">
           <div class="input-group-prepend">
             <span class="input-group-text">
-                <i class="fas fa-link"></i>
+              <i class="fas fa-link"></i>
             </span>
           </div>
         </div>
+
         <small id="urlHelp" class="form-text text-muted">Indique la URL del libro en este campo.</small>
       </div>
+
       <div class="form-group col-md-6">
-        <label for="imagenLibro">Imagen</label>
-        <input type="file" class="form-control-file" id="imagenLibro">
+        <label>Imagen</label>
+        <input type="file" class="form-control-file" formControlName="imagen">
       </div>
 
       <div class="form-group col-md-12">
-        <button type="button" class="btn btn-primary" id="btnAccion"></button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
+
     </div>
   </div>
 </form>

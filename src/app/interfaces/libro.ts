@@ -6,6 +6,7 @@ export interface Libro {
     titulo: string;
     precio: number;
     imagen: ImagenLibro;
+    url: string;
     autor: string;
     activo: boolean;
     puntuacion: number;

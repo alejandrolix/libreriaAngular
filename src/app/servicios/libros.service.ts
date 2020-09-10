@@ -107,4 +107,11 @@ export class LibrosService {
 
     return observable;
   }
+
+  editarLibro(cod: string, libro: Libro): Observable<RespuestaLibro> {
+    let url = this.url + '/' + cod;
+    let observable = this.http.put<RespuestaLibro>(url, libro);
+
+    return observable;
+  }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -33,7 +33,8 @@ import { EditarLibroComponent } from './editar-libro/editar-libro.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
