@@ -114,4 +114,12 @@ export class LibrosService {
 
     return observable;
   }
+
+  crearLibro(libro: Libro): Observable<RespuestaLibro> {
+    let observable = this.http.post<RespuestaLibro>(this.url, {
+      ...libro
+    });
+
+    return observable;
+  }
 }

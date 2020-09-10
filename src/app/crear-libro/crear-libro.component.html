@@ -1,1 +1,91 @@
-<p>crear-libro works!</p>
+<form class="mt-4" [formGroup]="formCrearLibro" *ngIf="formCrearLibro != null" (ngSubmit)="crearLibro()">
+  <div class="container">
+    <div class="row">
+      <div class="form-group col-md-12">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" formControlName="activo">
+          <label class="form-check-label">Activo</label>
+        </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Código</label>
+        <input type="text" class="form-control" formControlName="cod" aria-describedby="codHelp" required>
+        <small id="codHelp" class="form-text text-muted">Indique el código del libro en este campo.</small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Título</label>
+        <input type="text" class="form-control" formControlName="titulo" aria-describedby="tituloHelp" required>
+        <small id="tituloHelp" class="form-text text-muted">Indique el título del libro en este campo.</small>
+        <small
+          class="error d-block mt-2"
+          *ngIf="formCrearLibro.get('titulo').touched && !formCrearLibro.get('titulo').valid">
+            El título es obligatorio
+        </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Autor</label>
+        <select class="form-control" aria-describedby="autoresHelp" formControlName="autor">
+          <option *ngFor="let autor of autores" [value]="autor.cod">{{ autor.NOMBRE }}</option>
+        </select>
+        <small id="autoresHelp" class="form-text text-muted">Indique el autor del libro en este campo.</small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>ISBN</label>
+        <input type="text" class="form-control" formControlName="isbn" aria-describedby="isbnHelp" required>
+        <small id="isbnHelp" class="form-text text-muted">Indique el ISBN del libro en este campo.</small>
+        <small
+          class="error d-block mt-2"
+          *ngIf="formCrearLibro.get('isbn').touched && !formCrearLibro.get('isbn').valid">
+            El ISBN es obligatorio
+        </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Precio</label>
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control" formControlName="precio" aria-describedby="precioHelp" required>
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fas fa-euro-sign"></i>
+            </span>
+          </div>
+        </div>
+
+        <small id="precioHelp" class="form-text text-muted">Indique el precio del libro en este campo.</small>
+        <small
+          class="error d-block mt-2"
+          *ngIf="formCrearLibro.get('precio').touched && !formCrearLibro.get('precio').valid">
+            El precio es obligatorio
+        </small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>URL</label>
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control" formControlName="url" aria-describedby="urlHelp">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fas fa-link"></i>
+            </span>
+          </div>
+        </div>
+
+        <small id="urlHelp" class="form-text text-muted">Indique la URL del libro en este campo.</small>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Imagen</label>
+        <input type="file" class="form-control-file" formControlName="imagen">
+      </div>
+
+      <div class="form-group col-md-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!formCrearLibro.valid">Guardar</button>
+      </div>
+
+    </div>
+  </div>
+</form>
