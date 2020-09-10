@@ -4,6 +4,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
 import { ComprobarCodLibroGuard } from './guards/comprobar-cod-libro.guard';
 import { EditarLibroComponent } from './editar-libro/editar-libro.component';
+import { CrearLibroComponent } from './crear-libro/crear-libro.component';
 
 export const rutas: Route[] = [
   {
@@ -13,6 +14,10 @@ export const rutas: Route[] = [
   {
     path: 'libros',
     component: LibreriaComponent
+  },
+  {
+    path: 'libros/crear',
+    component: CrearLibroComponent
   },
   {
     path: 'libros/:cod/detalle',

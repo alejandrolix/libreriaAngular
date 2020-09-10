@@ -15,6 +15,7 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { DetalleLibroComponent } from './detalle-libro/detalle-libro.component';
 import { EditarLibroComponent } from './editar-libro/editar-libro.component';
+import { CrearLibroComponent } from './crear-libro/crear-libro.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EditarLibroComponent } from './editar-libro/editar-libro.component';
     PiePaginaComponent,
     InicioComponent,
     DetalleLibroComponent,
-    EditarLibroComponent
+    EditarLibroComponent,
+    CrearLibroComponent
   ],
   imports: [
     BrowserModule,
